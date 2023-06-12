@@ -1,10 +1,11 @@
-package screens;
+package screens.login;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.support.FindBy;
+import screens.BaseScreen;
 
-public class LoginSocialMediaScreen extends BaseScreen{
+public class LoginSocialMediaScreen extends BaseScreen {
     public LoginSocialMediaScreen(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
@@ -12,6 +13,7 @@ public class LoginSocialMediaScreen extends BaseScreen{
     MobileElement signUpBtn;
 
     public ReturningCustomerScreen clickSignUp(){
+        pause(2000);
         signUpBtn.click();
         return new ReturningCustomerScreen(driver);
     }

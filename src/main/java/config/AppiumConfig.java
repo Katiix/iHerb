@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeSuite;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 public class AppiumConfig {
     protected static AppiumDriver<MobileElement> driver;
@@ -22,6 +23,8 @@ public class AppiumConfig {
         caps.setCapability("automationName", "Appium");
 
         driver = new AppiumDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
     }
     @AfterSuite
     public void tearDown(){

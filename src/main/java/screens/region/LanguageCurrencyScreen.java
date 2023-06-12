@@ -1,10 +1,9 @@
-package screens;
+package screens.region;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import net.bytebuddy.description.type.TypeDescription;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
+import screens.BaseScreen;
 
 public class LanguageCurrencyScreen extends BaseScreen {
     public LanguageCurrencyScreen(AppiumDriver<MobileElement> driver) {

@@ -1,8 +1,10 @@
-package screens;
+package screens.region;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.support.FindBy;
+import screens.BaseScreen;
+import screens.login.BenefitsScreen;
 
 public class RegionScreen extends BaseScreen {
 
@@ -26,7 +28,7 @@ public class RegionScreen extends BaseScreen {
     }
 
     public boolean countryCheck(String text) {
-        System.out.println(country.getText());
+        pause(2000);
         if (country.getText().contains("IL")) {
             return true;
         } else return false;
