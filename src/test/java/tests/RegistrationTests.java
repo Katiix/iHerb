@@ -4,15 +4,13 @@ import config.AppiumConfig;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import screens.HomeScreen;
-import screens.login.BenefitsScreen;
-import screens.login.CreateAccountScreen;
-import screens.login.LoginSocialMediaScreen;
-import screens.login.ReturningCustomerScreen;
+import screens.login_registration.BenefitsScreen;
+import screens.login_registration.CreateAccountScreen;
 import screens.region.RegionScreen;
 
 public class RegistrationTests extends AppiumConfig {
 
-    @Test
+    @Test(groups={"smoke", "positive"})
     public void LoginPageOpen(){
         BenefitsScreen res = new RegionScreen(driver)
                 .chooseCountry()
@@ -25,7 +23,7 @@ public class RegistrationTests extends AppiumConfig {
     }
 
 
-    @Test
+    @Test(groups={"smoke", "positive"})
     public void CreateAccountSuccess(){
         HomeScreen res = new RegionScreen(driver)
                 .chooseCountry()
@@ -39,7 +37,7 @@ public class RegistrationTests extends AppiumConfig {
         Assert.assertTrue(new HomeScreen(driver).homeScreenOpen());
     }
 
-    @Test
+    @Test(groups={"smoke", "negative"})
     public void CreateAccountEmailInvalid(){
         HomeScreen res = new RegionScreen(driver)
                 .chooseCountry()
@@ -53,7 +51,7 @@ public class RegistrationTests extends AppiumConfig {
         Assert.assertTrue(new CreateAccountScreen(driver).invalidEmailMessageAppears());
     }
 
-    @Test
+    @Test(groups={"smoke", "negative"})
     public void CreateAccountPasswordInvalid(){
         HomeScreen res = new RegionScreen(driver)
                 .chooseCountry()

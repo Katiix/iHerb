@@ -2,7 +2,7 @@ package tests;
 
 import config.AppiumConfig;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import screens.HomeScreen;
 import screens.cart.CartScreen;
@@ -10,7 +10,7 @@ import screens.region.RegionScreen;
 
 
 public class CartTests extends AppiumConfig {
-    @BeforeClass
+    @BeforeMethod(alwaysRun = true)
     public void preCondition() {
         new RegionScreen(driver)
                 .chooseCountry()
@@ -22,7 +22,7 @@ public class CartTests extends AppiumConfig {
                 .logIn("xerojis275@ratedane.com", "TestPass123$").closeBtn();
     }
 
-    @Test
+    @Test(groups={"smoke","positive"})
     public void addToCartFromSearch(){
         CartScreen res = new HomeScreen(driver)
                 .search("Deodorant")
@@ -30,7 +30,7 @@ public class CartTests extends AppiumConfig {
                 .addToCartClick();
         Assert.assertTrue(new CartScreen(driver).cartConfirmCheck());
     }
-    @Test
+    @Test(groups={"smoke", "positive"})
     public void goToCartFromSearch(){
         CartScreen res = new HomeScreen(driver)
                 .search("Deodorant")

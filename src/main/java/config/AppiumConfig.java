@@ -2,8 +2,11 @@ package config;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import java.net.MalformedURLException;
@@ -11,8 +14,9 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class AppiumConfig {
+
     protected static AppiumDriver<MobileElement> driver;
-    @BeforeSuite
+    @BeforeMethod(alwaysRun = true)
     public void setUp() throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("platformName","Android");
@@ -26,8 +30,8 @@ public class AppiumConfig {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
     }
-    @AfterSuite
+    @AfterMethod(alwaysRun = true)
     public void tearDown(){
-        //driver.quit();
+        driver.quit();
     }
 }

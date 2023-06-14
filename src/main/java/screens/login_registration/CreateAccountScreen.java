@@ -1,15 +1,11 @@
-package screens.login;
+package screens.login_registration;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import screens.BaseScreen;
 import screens.HomeScreen;
-
-import java.lang.reflect.MalformedParameterizedTypeException;
 
 
 public class CreateAccountScreen extends BaseScreen {

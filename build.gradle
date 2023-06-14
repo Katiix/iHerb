@@ -11,16 +11,33 @@ repositories {
 
 dependencies {
     implementation 'org.testng:testng:7.5'
-    implementation 'ch.qos.logback:logback-classic:1.2.8'
-
-    compileOnly 'org.projectlombok:lombok:1.18.22'
-    annotationProcessor 'org.projectlombok:lombok:1.18.22'
-
-    testCompileOnly 'org.projectlombok:lombok:1.18.16'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
     implementation 'io.appium:java-client:7.6.0'
 }
 
+
 test {
     useTestNG()
+}
+
+task smoke(type: Test) {
+
+    useTestNG {
+        suites 'src/test/resources/smoke.xml'
+    }
+
+    task positive(type: Test) {
+        useTestNG {
+            suites 'src/test/resources/positive.xml'
+        }
+    }
+
+    task negative(type: Test) {
+
+        useTestNG {
+            suites 'src/test/resources/negative.xml'
+        }
+
+    }
+
+
 }

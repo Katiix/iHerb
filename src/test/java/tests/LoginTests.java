@@ -4,11 +4,11 @@ import config.AppiumConfig;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import screens.HomeScreen;
-import screens.login.ReturningCustomerScreen;
+import screens.login_registration.ReturningCustomerScreen;
 import screens.region.RegionScreen;
 
 public class LoginTests extends AppiumConfig {
-    @Test
+    @Test(groups={"smoke", "positive"})
     public void LoginSuccess(){
         HomeScreen res = new RegionScreen(driver)
                 .chooseCountry()
@@ -21,7 +21,7 @@ public class LoginTests extends AppiumConfig {
                 .signIn();
         Assert.assertTrue(new HomeScreen(driver).homeScreenOpen());
     }
-    @Test
+    @Test(groups={"smoke", "negative"})
     public void LoginEmailInvalid(){
         HomeScreen res = new RegionScreen(driver)
                 .chooseCountry()
@@ -35,7 +35,7 @@ public class LoginTests extends AppiumConfig {
         Assert.assertTrue(new ReturningCustomerScreen(driver).errorMessagePresent());
     }
 
-    @Test
+    @Test(groups={"smoke", "negative"})
     public void LoginPasswordInvalid(){
         HomeScreen res = new RegionScreen(driver)
                 .chooseCountry()

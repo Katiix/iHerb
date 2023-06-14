@@ -4,7 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.support.FindBy;
 import screens.BaseScreen;
-import screens.login.BenefitsScreen;
+import screens.login_registration.BenefitsScreen;
 
 public class RegionScreen extends BaseScreen {
 
@@ -20,7 +20,11 @@ public class RegionScreen extends BaseScreen {
 
     @FindBy(id = "com.iherb:id/regional_button_save")
     MobileElement buttonNext;
+    @FindBy(id = "com.iherb:id/etZipCode")
+    MobileElement zipCode;
 
+    @FindBy(id = "com.iherb:id/textinput_error")
+    MobileElement errorZipInvalid;
 
     public LanguageCurrencyScreen chooseCountry() {
         country.click();
@@ -48,8 +52,21 @@ public class RegionScreen extends BaseScreen {
         }else return false;
     }
 
+    public RegionScreen zipCodeChoice(String text){
+        zipCode.click();
+        driver.hideKeyboard();
+        zipCode.sendKeys(text);
+        return new RegionScreen(driver);
+    }
+
+    public boolean errorInvalidZipCode(){
+        if(errorZipInvalid.getText().contains("Invalid zip code")) return true;
+        else return false;
+    }
     public BenefitsScreen clickNext(){
         buttonNext.click();
         return new BenefitsScreen(driver);
     }
+
+
 }

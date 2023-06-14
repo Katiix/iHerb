@@ -27,6 +27,14 @@ public class SearchScreen extends BaseScreen {
     @FindBy(id = "com.iherb:id/add_cart_icon")
     MobileElement addToCartBtn;
 
+    @FindBy(id = "com.iherb:id/first_line")
+    MobileElement noResultsMessage;
+
+    @FindBy(id = "com.iherb:id/second_line")
+    MobileElement resultInvalidTitle;
+
+    @FindBy(id = "com.iherb:id/title")
+    MobileElement errorUnableToFind;
     public SearchScreen closeHintBtn() {
         pause(2000);
         closeHintBtn.click();
@@ -40,6 +48,11 @@ public class SearchScreen extends BaseScreen {
 
     public boolean resultTitleCheck(String text) {
         if (resultTitle.getText().contains(text)) return true;
+        else return false;
+    }
+
+    public boolean noResultsErrorMessage(String text){
+        if(errorUnableToFind.getText().contains("We were unable to find any items matching \""+text+"\"")) return true;
         else return false;
     }
     public FilterScreen filterClick(){

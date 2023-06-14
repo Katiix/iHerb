@@ -2,11 +2,13 @@ package screens;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import screens.search.SearchScreen;
 
-import javax.swing.*;
+
+
 
 public class HomeScreen extends BaseScreen{
 
@@ -47,9 +49,6 @@ public class HomeScreen extends BaseScreen{
         action.click(searchResult).perform();
         return new SearchScreen(driver);
     }
-
-
-
 
 
 }
